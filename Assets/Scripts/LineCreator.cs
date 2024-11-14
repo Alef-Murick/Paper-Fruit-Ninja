@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Numerics;
 using UnityEngine;
 
 public class LineCreator : MonoBehaviour
@@ -22,22 +21,67 @@ public class LineCreator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Application.platform == RuntimePlatform.Android) // Android Controller
         {
-            mouseDown = true;
+            if (Input.touchCount > 0)
+            {
+                if (Input.GetTouch(0).phase == TouchPhase.Moved)
+                {
+                    line.positionCount = vertexCount + 1;
+                    Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                    line.SetPosition(vertexCount, mousePos);
+                    vertexCount++;
+
+                    BoxCollider2D box = gameObject.AddComponent<BoxCollider2D>();
+                    box.transform.position = line.transform.position;
+                    box.size = new Vector2(0.1f, 0.1f);
+                }
+
+                if (Input.GetTouch(0).phase == TouchPhase.Ended)
+                {
+                    if (Input.GetMouseButtonUp(0))
+                    {
+                        mouseDown = false;
+                        vertexCount = 0;
+                        line.positionCount = 0;
+                        BoxCollider2D[] colliders = GetComponents<BoxCollider2D>();
+                        foreach (BoxCollider2D box in colliders)
+                        {
+                            Destroy(box);
+                        }
+                    }
+                }
+            }
         }
-        if (mouseDown)
+        else if (Application.platform == RuntimePlatform.WindowsPlayer) // Mouse Controller
         {
-            line.positionCount = vertexCount + 1;
-            UnityEngine.Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            line.SetPosition(vertexCount, mousePos);
-            vertexCount++;
-        }
-        if (Input.GetMouseButtonUp(0))
-        {
-            mouseDown = false;
-            vertexCount = 0;
-            line.positionCount = 0;
+
+            if (Input.GetMouseButtonDown(0))
+            {
+                mouseDown = true;
+            }
+            if (mouseDown)
+            {
+                line.positionCount = vertexCount + 1;
+                Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                line.SetPosition(vertexCount, mousePos);
+                vertexCount++;
+
+                BoxCollider2D box = gameObject.AddComponent<BoxCollider2D>();
+                box.transform.position = line.transform.position;
+                box.size = new Vector2(0.1f, 0.1f);
+            }
+            if (Input.GetMouseButtonUp(0))
+            {
+                mouseDown = false;
+                vertexCount = 0;
+                line.positionCount = 0;
+                BoxCollider2D[] colliders = GetComponents<BoxCollider2D>();
+                foreach (BoxCollider2D box in colliders)
+                {
+                    Destroy(box);
+                }
+            }
         }
     }
 }
