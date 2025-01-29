@@ -5,6 +5,7 @@ using UnityEngine;
 public class FruitSpawner : MonoBehaviour
 {
     public GameObject fruit;
+    public GameObject bomb;
     public float maxX;
     // Start is called before the first frame update
     void Start()
@@ -32,6 +33,11 @@ public class FruitSpawner : MonoBehaviour
     public void SpawnFruitGroups()
     {
         StartCoroutine("SpawnFruit");
+
+        if (Random.Range(0, 6) > 4)
+        {
+            SpawnBomb();
+        }
     }
 
     IEnumerator SpawnFruit()
@@ -50,5 +56,18 @@ public class FruitSpawner : MonoBehaviour
 
             yield return new WaitForSeconds(0.5f);
         }
+    }
+
+    void SpawnBomb()
+    {
+        float RandomX = Random.Range(-maxX, maxX);
+        float RandomY = Random.Range(12f, 18f);
+        float RandomZ = Random.Range(-50f, 50f);
+
+        Vector3 pos = new Vector3(RandomX, transform.position.y, 0);
+        GameObject b = Instantiate(bomb, pos, Quaternion.identity);
+
+        b.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, RandomY), ForceMode2D.Impulse);
+        b.GetComponent<Rigidbody2D>().AddTorque(RandomZ);
     }
 }
