@@ -24,6 +24,13 @@ public class FruitScript : MonoBehaviour
             GameObject c1 = Instantiate(cut1, transform.position, cut1.transform.rotation) as GameObject;
             GameObject c2 = Instantiate(cut2, new Vector3(transform.position.x - 2f, transform.position.y, 0), cut2.transform.rotation) as GameObject;
 
+            c1.GetComponent<Rigidbody2D>().AddForce(new Vector2(2f, 2f), ForceMode2D.Impulse);
+            c1.GetComponent<Rigidbody2D>().AddTorque(Random.Range(-2f, 2f), ForceMode2D.Impulse);
+
+            c2.GetComponent<Rigidbody2D>().AddForce(new Vector2(-2f, 2f), ForceMode2D.Impulse);
+            c2.GetComponent<Rigidbody2D>().AddTorque(Random.Range(-2f, 2f), ForceMode2D.Impulse);
+
+
             Destroy(gameObject);
         }
     }
