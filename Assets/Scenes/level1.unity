@@ -344,6 +344,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fruit: {fileID: 2531105698085929209, guid: e67dee6c769d1eb46b35c804dd6490ed, type: 3}
+  bomb: {fileID: 8727916203899263868, guid: 7eb51471e557cd044b7e36b28d295878, type: 3}
   maxX: 7
 --- !u!1 &1444686033
 GameObject:
@@ -358,7 +359,7 @@ GameObject:
   - component: {fileID: 1444686034}
   m_Layer: 0
   m_Name: Line
-  m_TagString: Untagged
+  m_TagString: Line
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -377,7 +378,7 @@ LineRenderer:
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
   m_MotionVectors: 0
-  m_LightProbeUsage: 0
+  m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 0
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
@@ -486,6 +487,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c288adb8cd76f2c4e9b1d5dac8b348f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  blast: {fileID: 5917920912690704434, guid: 58c2f2192bfcc554b952b1b7bbd8e799, type: 3}
 --- !u!4 &1444686036
 Transform:
   m_ObjectHideFlags: 0
@@ -501,3 +503,68 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &9105750561342066429
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 499125426372890029, guid: e67dee6c769d1eb46b35c804dd6490ed, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 499125426372890029, guid: e67dee6c769d1eb46b35c804dd6490ed, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.14122772
+      objectReference: {fileID: 0}
+    - target: {fileID: 499125426372890029, guid: e67dee6c769d1eb46b35c804dd6490ed, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.20969713
+      objectReference: {fileID: 0}
+    - target: {fileID: 499125426372890029, guid: e67dee6c769d1eb46b35c804dd6490ed, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 499125426372890029, guid: e67dee6c769d1eb46b35c804dd6490ed, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9396927
+      objectReference: {fileID: 0}
+    - target: {fileID: 499125426372890029, guid: e67dee6c769d1eb46b35c804dd6490ed, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 499125426372890029, guid: e67dee6c769d1eb46b35c804dd6490ed, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 499125426372890029, guid: e67dee6c769d1eb46b35c804dd6490ed, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.3420201
+      objectReference: {fileID: 0}
+    - target: {fileID: 499125426372890029, guid: e67dee6c769d1eb46b35c804dd6490ed, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 499125426372890029, guid: e67dee6c769d1eb46b35c804dd6490ed, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 499125426372890029, guid: e67dee6c769d1eb46b35c804dd6490ed, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -40
+      objectReference: {fileID: 0}
+    - target: {fileID: 2531105698085929209, guid: e67dee6c769d1eb46b35c804dd6490ed, type: 3}
+      propertyPath: m_Name
+      value: watermelon
+      objectReference: {fileID: 0}
+    - target: {fileID: 2531105698085929209, guid: e67dee6c769d1eb46b35c804dd6490ed, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e67dee6c769d1eb46b35c804dd6490ed, type: 3}
