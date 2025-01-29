@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 203858342219552186}
   - component: {fileID: 8258001229399318275}
   - component: {fileID: 8422728867075965296}
+  - component: {fileID: 379094596141883465}
   m_Layer: 6
   m_Name: watermelon
   m_TagString: Fruit
@@ -32,7 +33,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -40}
 --- !u!212 &203858342219552186
 SpriteRenderer:
@@ -118,9 +119,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.10690482, y: -0.06802249}
+  m_Offset: {x: -0.08805937, y: -0.052209284}
   serializedVersion: 2
-  m_Radius: 0.7431115
+  m_Radius: 0.96451986
 --- !u!50 &8422728867075965296
 Rigidbody2D:
   serializedVersion: 4
@@ -146,5 +147,19 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
+--- !u!114 &379094596141883465
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2531105698085929209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58fafb7b9d6468a448e45f1602716d34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cut1: {fileID: 671294613047579667, guid: 1ef28389f1b1c4d4aaf080761bbb7d89, type: 3}
+  cut2: {fileID: 8222327108280359941, guid: e2cc709eb6bfcfa4b957be3b04916763, type: 3}

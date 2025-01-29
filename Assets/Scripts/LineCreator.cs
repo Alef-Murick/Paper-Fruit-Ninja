@@ -53,33 +53,54 @@ public class LineCreator : MonoBehaviour
                 }
             }
         }
-        else if (Application.platform == RuntimePlatform.WindowsPlayer) // Mouse Controller
+        //else if (Application.platform == RuntimePlatform.WindowsPlayer) // Mouse Controller
+        else
         {
-
             if (Input.GetMouseButtonDown(0))
             {
                 mouseDown = true;
             }
+
             if (mouseDown)
             {
                 line.positionCount = vertexCount + 1;
                 Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                mousePos.z = 0f;  // Ensure the z-value is zero for 2D positioning
                 line.SetPosition(vertexCount, mousePos);
                 vertexCount++;
 
-                BoxCollider2D box = gameObject.AddComponent<BoxCollider2D>();
-                box.transform.position = line.transform.position;
-                box.size = new Vector2(0.1f, 0.1f);
+                // Check if the PolygonCollider2D already exists, if not, add it
+                PolygonCollider2D polygonCollider = gameObject.GetComponent<PolygonCollider2D>();
+                if (polygonCollider == null)
+                {
+                    polygonCollider = gameObject.AddComponent<PolygonCollider2D>();
+                }
+
+                // Update the collider points based on the line's positions
+                Vector3[] positions = new Vector3[line.positionCount];
+                line.GetPositions(positions);
+
+                Vector2[] colliderPoints = new Vector2[positions.Length];
+                for (int i = 0; i < positions.Length; i++)
+                {
+                    colliderPoints[i] = new Vector2(positions[i].x, positions[i].y);
+                }
+
+                // Set the new path for the PolygonCollider2D
+                polygonCollider.SetPath(0, colliderPoints);
             }
+
             if (Input.GetMouseButtonUp(0))
             {
                 mouseDown = false;
                 vertexCount = 0;
                 line.positionCount = 0;
-                BoxCollider2D[] colliders = GetComponents<BoxCollider2D>();
-                foreach (BoxCollider2D box in colliders)
+
+                // Optionally, destroy the PolygonCollider2D when the line is finished
+                PolygonCollider2D polygonCollider = GetComponent<PolygonCollider2D>();
+                if (polygonCollider != null)
                 {
-                    Destroy(box);
+                    Destroy(polygonCollider);
                 }
             }
         }
